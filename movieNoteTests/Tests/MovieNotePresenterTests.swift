@@ -44,8 +44,9 @@ final class MovieNotePresenterTests: XCTestCase {
     }
     
     func test_didTapLeftBarButton이_요청되면() {
-        sut.didTapLeftBarButton(contentsTextView: "")
+        sut.didTapLeftBarButton(contents: "tests")
         
+        XCTAssertTrue(viewController.isCalledUpdateMovieNote)
         XCTAssertTrue(coreDataManager.isCalledUpdateMovieNote)
     }
     

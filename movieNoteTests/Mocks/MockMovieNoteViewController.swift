@@ -15,6 +15,7 @@ final class MockMovieNoteViewController: MovieNoteProtocol {
     var isCalledPushToMovieListViewController = false
     var isCalledMessageAlert = false
     var isCalledDidTapShareButton = false
+    var isCalledUpdateMovieNote = false
     
     func setupNavigationBar() {
         isCalledSetupNavigationBar = true
@@ -38,5 +39,9 @@ final class MockMovieNoteViewController: MovieNoteProtocol {
     
     func didTapShareButton() {
         isCalledDidTapShareButton = true
+    }
+    
+    func updateMovieNote(contents: String) {
+        isCalledUpdateMovieNote = true
     }
 }

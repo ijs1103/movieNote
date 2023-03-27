@@ -151,6 +151,10 @@ extension MovieNoteViewController: MovieNoteProtocol {
         activityVC.popoverPresentationController?.sourceView = self.view
         self.present(activityVC, animated: true, completion: nil)
     }
+    
+    func updateMovieNote(contents: String) {
+        movieNote.contents = contents
+    }
 }
 
 private extension MovieNoteViewController {
@@ -159,7 +163,7 @@ private extension MovieNoteViewController {
         if Constants.contentsTextViewPlaceholder == contentsTextView.text {
             pushToMovieListViewController()
         } else {
-            presenter.didTapLeftBarButton(contentsTextView: contentsTextView.text)
+            presenter.didTapLeftBarButton(contents: contentsTextView.text)
         }
     }
     @objc func didTapRightBarButton() {

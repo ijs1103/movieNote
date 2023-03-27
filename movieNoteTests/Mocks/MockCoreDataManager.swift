@@ -33,10 +33,10 @@ final class MockCoreDataManager: CoreDataManagerProtocol {
     }
     
     func deleteMovieNote(with movieNote: MovieNoteData, completion: @escaping () -> Void) {
-        isCalledDeleteMovieNote = false
+        isCalledDeleteMovieNote = true
     }
     
     func updateMovieNote(with movieNote: MovieNoteData, completion: @escaping () -> Void) {
-        isCalledUpdateMovieNote = false
+        isCalledUpdateMovieNote = true
     }
 }

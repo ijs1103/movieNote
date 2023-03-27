@@ -14,6 +14,7 @@ protocol MovieNoteProtocol: AnyObject {
     func pushToMovieListViewController()
     func messageAlert(message: String, completion: @escaping (Bool) -> Void)
     func didTapShareButton()
+    func updateMovieNote(contents: String)
 }
 
 final class MovieNotePresenter: NSObject {
@@ -42,8 +43,8 @@ final class MovieNotePresenter: NSObject {
         viewController?.darkModeCheck()
     }
     
-    func didTapLeftBarButton(contentsTextView contents: String) {
-        movieNote.contents = contents
+    func didTapLeftBarButton(contents: String) {
+        viewController?.updateMovieNote(contents: contents)
         coreDataManager.updateMovieNote(with: movieNote) {            self.viewController?.pushToMovieListViewController()
         }
     }
