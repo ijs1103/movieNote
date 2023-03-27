@@ -27,15 +27,15 @@ final class MovieSearchPresenter: NSObject {
     
     private let coreDataManager: CoreDataManagerProtocol
     
-    private let netWorkManager: NetworkManagerProtocol
+    private let networkManager: NetworkManagerProtocol
     
     private var searchedMovie: [Movie] = []
     
-    init(viewController: MovieSearchProtocol, netWorkManager: NetworkManagerProtocol = NetworkManager(),
+    init(viewController: MovieSearchProtocol, networkManager: NetworkManagerProtocol = NetworkManager(),
          coreDataManager: CoreDataManagerProtocol = CoreDataManager.shared
     ) {
         self.viewController = viewController
-        self.netWorkManager = netWorkManager
+        self.networkManager = networkManager
         self.coreDataManager = coreDataManager
     }
     
@@ -68,7 +68,7 @@ extension MovieSearchPresenter: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        netWorkManager.fetchMovie(from: searchText) { [weak self] result in
+        networkManager.fetchMovie(from: searchText) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case let .success(result):
