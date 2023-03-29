@@ -49,7 +49,9 @@ extension MovieListViewController: MovieListProtocol {
         navigationItem.title = "영화 노트"
         let image = UIImage(systemName: "slider.vertical.3")
         let leftBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(didTapLeftBarButtonItem))
+        leftBarButtonItem.accessibilityIdentifier = "leftBarButtonItem"
         let rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapRightBarButtonItem))
+        rightBarButtonItem.accessibilityIdentifier = "rightBarButtonItem"
         navigationItem.leftBarButtonItem = leftBarButtonItem
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
