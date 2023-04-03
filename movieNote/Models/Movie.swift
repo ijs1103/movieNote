@@ -9,7 +9,11 @@ import Foundation
 import UIKit
 
 final class Movie: Codable {
-    let title: String
+    
+    var title: String {
+        return rawTitle.replacingOccurrences(of: "!HS", with: "").replacingOccurrences(of: "!HE", with: "").trimmingCharacters(in: .whitespaces)
+    }
+    private let rawTitle: String
     private let image: String
     let pubDate: String?
     var pngImageData: Data?
@@ -17,11 +21,13 @@ final class Movie: Codable {
         URL(string: image)
     }
     private enum CodingKeys: String, CodingKey {
-        case title, image, pubDate
+        case rawTitle = "title"
+        case image = "posters"
+        case pubDate = "prodYear"
     }
     init(_ title: String, _ uiImage: UIImage) {
         self.pngImageData = uiImage.pngData()
-        self.title = title
+        self.rawTitle = title
         self.pubDate = ""
         self.image = ""
     }

@@ -17,21 +17,19 @@ protocol NetworkManagerProtocol {
 struct NetworkManager: NetworkManagerProtocol {
     func fetchMovie(from keyword: String, completionHandler: @escaping NetworkCompletion) {
         
-        guard let url = URL(string: "https://openapi.naver.com/v1/search/movie.json") else { return }
+        guard let url = URL(string: "http://api.koreafilm.or.kr/openapi-data2/wisenut/search_api/search_json2.jsp") else { return }
         
         let parameters = [
-            "query": keyword
+            "collection": "kmdb_new2",
+            "listCount": "20",
+            "ServiceKey": Env.ServiceKey,
+            "title": keyword
         ]
-        
-        let headers: HTTPHeaders = [
-            "X-Naver-Client-Id": Env.id,
-            "X-Naver-Client-Secret": Env.secret
-        ]
-        
-        AF.request(url, method: .get, parameters: parameters, headers: headers).responseDecodable(of: MovieResponseModel.self) { response in
+
+        AF.request(url, method: .get, parameters: parameters, headers: nil).responseDecodable(of: MovieResponseModel.self) { response in
             switch response.result {
             case let .success(result):
-                completionHandler(.success(result.items))
+                completionHandler(.success(result.data[0].movies))
             case let .failure(error):
                 completionHandler(.failure(error))
             }
