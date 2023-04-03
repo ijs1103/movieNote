@@ -25,7 +25,7 @@ final class MovieSearchViewController: UIViewController {
     private let searchLabel: UILabel = {
         let uiLabel = UILabel()
         uiLabel.textColor = .secondaryLabel
-        uiLabel.text = "제목 혹은 작가로 검색하세요"
+        uiLabel.text = "영화 제목으로 검색하세요"
         
         return uiLabel
     }()
