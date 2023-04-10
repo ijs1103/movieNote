@@ -77,15 +77,18 @@ extension ThemeViewController: ThemeProtocol {
     func toggleDarkMode(sender: UISwitch) {
         if sender.isOn {
             label.text = Constants.darkModeText
+            label.textColor = .white
+            view.backgroundColor = .black
         } else {
             label.text = Constants.lightModeText
+            label.textColor = .black
+            view.backgroundColor = .white
         }
         if self.overrideUserInterfaceStyle == .light {
             UserDefaults.standard.set("Dark", forKey: "Appearance")
         } else {
             UserDefaults.standard.set("Light", forKey: "Appearance")
         }
-        self.viewWillAppear(true)
     }
 }
 
