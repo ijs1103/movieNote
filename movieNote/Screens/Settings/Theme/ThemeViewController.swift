@@ -75,16 +75,22 @@ extension ThemeViewController: ThemeProtocol {
     }
     
     func toggleDarkMode(sender: UISwitch) {
-        if sender.isOn {
-            label.text = Constants.darkModeText
-            label.textColor = .white
-            view.backgroundColor = .black
-        } else {
-            label.text = Constants.lightModeText
-            label.textColor = .black
-            view.backgroundColor = .white
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else { return }
+            UIView.animate(withDuration: 0.3) {
+                if sender.isOn {
+                    self.label.text = Constants.darkModeText
+                    self.label.textColor = .white
+                    self.view.backgroundColor = .black
+                } else {
+                    self.label.text = Constants.lightModeText
+                    self.label.textColor = .black
+                    self.view.backgroundColor = .white
+                }
+            }
         }
-        if self.overrideUserInterfaceStyle == .light {
+        
+        if overrideUserInterfaceStyle == .light {
             UserDefaults.standard.set("Dark", forKey: "Appearance")
         } else {
             UserDefaults.standard.set("Light", forKey: "Appearance")
