@@ -24,8 +24,8 @@ class MovieListCollectionViewCell: UICollectionViewCell {
     func update(_ movieNote: MovieNoteData) {
         setupView()
         setupLayout()
-        if movieNote.pngImageData != nil {
-            imageView.image = UIImage(data: movieNote.pngImageData!) ?? UIImage()
+        if movieNote.jpegData != nil {
+            imageView.image = UIImage(data: movieNote.jpegData!) ?? UIImage()
         } else {
             imageView.kf.setImage(with: movieNote.imageURL)
         }

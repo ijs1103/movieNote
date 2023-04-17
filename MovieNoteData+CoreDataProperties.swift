@@ -2,12 +2,13 @@
 //  MovieNoteData+CoreDataProperties.swift
 //  movieNote
 //
-//  Created by 이주상 on 2023/03/23.
+//  Created by 이주상 on 2023/04/17.
 //
 //
 
 import Foundation
 import CoreData
+
 
 extension MovieNoteData {
 
@@ -17,10 +18,11 @@ extension MovieNoteData {
 
     @NSManaged public var contents: String?
     @NSManaged public var imageURL: URL?
+    @NSManaged public var jpegData: Data?
     @NSManaged public var pubDate: String?
     @NSManaged public var savedDate: Date?
     @NSManaged public var title: String?
-    @NSManaged public var pngImageData: Data?
+    
     var createdAt: String? {
         let myFormatter = DateFormatter()
         myFormatter.dateFormat = "yyyy-MM-dd"
@@ -30,6 +32,6 @@ extension MovieNoteData {
     }
 }
 
-extension MovieNoteData: Identifiable {
+extension MovieNoteData : Identifiable {
 
 }

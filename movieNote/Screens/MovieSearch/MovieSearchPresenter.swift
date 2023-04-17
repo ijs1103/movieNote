@@ -119,19 +119,19 @@ extension MovieSearchPresenter: UITableViewDataSource {
 extension MovieSearchPresenter: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         
-        var selectImage: UIImage?
+        var resizedImage: UIImage?
             
         if let editedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            selectImage = editedImage
+            resizedImage = editedImage.resize(image: editedImage, newWidth: UIImage.collectionViewImageWidth)
         } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            selectImage = originalImage
+            resizedImage = originalImage.resize(image: originalImage, newWidth: UIImage.collectionViewImageWidth)
         }
         
         picker.dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
             self.viewController?.movieTitleAlert { title, okTapped in
                 if !okTapped { return }
-                let movie = Movie(title!, selectImage!)
+                let movie = Movie(title!, resizedImage!)
                 self.coreDataManager.setMovieNote(with: movie, contents: "")
                 self.viewController?.pushToMovieListViewController()
             }

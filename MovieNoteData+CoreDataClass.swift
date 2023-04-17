@@ -2,7 +2,7 @@
 //  MovieNoteData+CoreDataClass.swift
 //  movieNote
 //
-//  Created by 이주상 on 2023/03/23.
+//  Created by 이주상 on 2023/04/17.
 //
 //
 

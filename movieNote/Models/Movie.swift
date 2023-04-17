@@ -16,7 +16,7 @@ final class Movie: Codable {
     private let rawTitle: String
     private let image: String
     let pubDate: String?
-    var pngImageData: Data?
+    var jpegData: Data?
     var imageURL: URL? {
         URL(string: image)
     }
@@ -26,7 +26,7 @@ final class Movie: Codable {
         case pubDate = "prodYear"
     }
     init(_ title: String, _ uiImage: UIImage) {
-        self.pngImageData = uiImage.pngData()
+        self.jpegData = uiImage.jpegData(compressionQuality: 0.9)
         self.rawTitle = title
         self.pubDate = ""
         self.image = ""

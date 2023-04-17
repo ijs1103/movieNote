@@ -54,6 +54,7 @@ final class MovieListPresenter: NSObject {
 extension MovieListPresenter: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width: CGFloat = collectionView.frame.width / 3 - 2.0
+        UIImage.collectionViewImageWidth = width
         return CGSize(width: width, height: width * 1.5)
     }
 

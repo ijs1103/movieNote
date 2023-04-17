@@ -76,7 +76,7 @@ final class CoreDataManager: CoreDataManagerProtocol {
                 
                 if let movieNoteData = NSManagedObject(entity: entity, insertInto: context) as? MovieNoteData {
                     
-                    movieNoteData.pngImageData = movie.pngImageData
+                    movieNoteData.jpegData = movie.jpegData
                     movieNoteData.title = movie.title.htmlToString
                     movieNoteData.imageURL = movie.imageURL
                     movieNoteData.pubDate = movie.pubDate
